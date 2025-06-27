@@ -36,15 +36,15 @@ function adminer_object()
             return "90b6de9470e50e76a8f81e78dd4707a7";
         }
 
-        function credentials()
-        {
-            return ['localhost', 'root', 'root'];
-        }
+        // function credentials()
+        // {
+        //     return ['localhost', 'root', 'root'];
+        // }
 
-        function login($login, $password)
-        {
-            return ($login == 'root' && $password == 'root');
-        }
+        // function login($login, $password)
+        // {
+        //     return ($login == 'root' && $password == 'root');
+        // }
     }
 
     return new AdminerCustomized($plugins);
