@@ -4,56 +4,25 @@
  */
 :root {
     /* Base colors */
-    --color-white: #fff;
     --color-white: #4c4f69;
-
-    --color-green: #5df1dc;
-    --color-green: #7287fd;
     --color-green: #1e66f5;
-
-    --color-green-dark: #0d3a33;
-    --color-green-dark: #eff1f5; /* replace */
-
-    --color-orange: #ffb978;
-    --color-orange: #df8e1d; /* replace */
-
-    --color-blue: #8fc3f7;
-    --color-blue: #1e66f5; /* replace */
-
-    --color-blue-light: #c4d3f5;
-    --color-blue-light: #7287fd;
+    --color-green-dark: #eff1f5;
+    --color-orange: #df8e1d;
+    --color-blue: #1e66f5;
     --color-blue-light: #6c6f85;
-    /* --color-blue-light: #8839ef;
-    --color-blue-light: #6c6f85; */
-
-    --color-purple: #a1a6e0;
-    --color-purple: #8839ef; /* replace */
-    --color-purple: #7287fd; /* replace */
-
-    --color-purple-600: #797998;
-    --color-purple-600: #ea76cb; /* replace */
-
-    --color-purple-700: #4b4c68;
-    --color-purple-700: #dd7878; /* replace */
-
-    --color-purple-800: #312f42;
-    --color-purple-800: #eff1f5; /* replace */
-
-    --color-purple-900: #2e2c3e;
-    --color-purple-900: #e6e9ef; /* replace */
-
-    --color-purple-1000: #2a2838;
-    --color-purple-1000: #dce0e8; /* replace */
-
+    --color-purple: #7287fd;
+    --color-purple-600: #ea76cb;
+    --color-purple-700: #dd7878;
+    --color-purple-800: #eff1f5;
+    --color-purple-900: #e6e9ef;
+    --color-purple-1000: #dce0e8;
     --color-red: #e44747;
     --color-black: #000;
 
     /* Background, borders, highlights and text */
     --color-background: var(--color-purple-800);
     --color-background-shade: var(--color-purple-900);
-
     --color-highlight: var(--color-purple-1000);
-
     --color-highlight-2: #ccd0da;
     --color-text: var(--color-white);
     --color-text-muted: #9ca0b0;
@@ -89,7 +58,7 @@
     --color-input-background: var(--color-highlight);
     --color-input-focus-background: var(--color-highlight-2);
     --color-input-text: var(--color-white);
-    --color-input-border: #ccd0da;
+    --color-input-border: var(--color-highlight-2);
     --color-input-checked: var(--color-white);
     --color-input-checked-text: var(--color-green-dark);
 
