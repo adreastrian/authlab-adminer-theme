@@ -8,7 +8,7 @@
  * @author Peter Knut
  * @copyright 2014-2018 Pematon, s.r.o. (http://www.pematon.com/)
  */
-class AdminerJsonPreview
+class AdminerJsonPreview extends \Adminer\Plugin
 {
     const MAX_TEXT_LENGTH = 100;
 

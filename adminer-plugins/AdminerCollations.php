@@ -8,7 +8,7 @@
  * @author Peter Knut
  * @copyright 2015-2018 Pematon, s.r.o. (http://www.pematon.com/)
  */
-class AdminerCollations
+class AdminerCollations extends \Adminer\Plugin
 {
     /** @var array */
     private $characterSets;

@@ -17,4 +17,5 @@ return [
     new AdminerJsonPreview,
     new AdminerCollations,
     // new FixedFooter,
+    new AutoLogin,
 ];

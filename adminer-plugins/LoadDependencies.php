@@ -1,6 +1,6 @@
 <?php
 
-class LoadDependencies
+class LoadDependencies extends \Adminer\Plugin
 {
     public function head()
     {
