@@ -98,10 +98,16 @@ class AdminerDarkSwitcher extends \Adminer\Plugin
         <script <?php echo Adminer\nonce(); ?>%pcs-comment-end#* />
             (function() {
                 const savedTheme = localStorage.getItem('adminer_dark_mode');
+
                 if (savedTheme === 'light') {
                     document.documentElement.classList.add('light-theme');
+                } else if (savedTheme === 'dark') {
+                    document.documentElement.classList.remove('light-theme');
+                } else {
+                    document.documentElement.classList.toggle('light-theme', window.matchMedia('(prefers-color-scheme: light)').matches);
                 }
-            })();
+            })()
+
             function getCurrentTheme() {
                 const savedTheme = localStorage.getItem('adminer_dark_mode');
                 return savedTheme || 'system';
@@ -174,8 +180,6 @@ class AdminerDarkSwitcher extends \Adminer\Plugin
                  * @param {string} theme The theme to apply: 'light', 'dark', or 'system'.
                  */
                 function applyTheme(theme) {
-                    const currentTheme = getCurrentTheme();
-
                     if (theme === 'light') {
                         htmlElement.classList.add('light-theme');
                     } else if (theme === 'dark') {
