@@ -16,6 +16,6 @@ return [
     // new AdminerMenuScroller,
     new AdminerJsonPreview,
     new AdminerCollations,
-    // new FixedFooter,
+    new FixedFooter,
     new AutoLogin,
 ];

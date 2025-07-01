@@ -1,8 +1,50 @@
-/* @import "light_theme_pepa_linha.css"; */
 @import "dark_theme_pepa_linha.css";
 
 :root {
+    /* Base colors */
+    --color-green: #8fc3f7;
     --shadow-table: none;
+    --color-base-variant: rgba(255, 255, 255, 0.03);
+    --color-base-variant-2: rgba(255, 255, 255, 0.05);
+    --color-base-variant-3: rgba(173, 173, 173, 0.02);
+    --color-text-variant: rgba(255, 255, 255, 0.45);
+
+    /* Background, borders, highlights and text */
+    --color-highlight: var(--color-base-variant);
+    --color-highlight-2: var(--color-base-variant-2);
+    --color-text-muted: var(--color-text-variant);
+
+    /* Tables */
+    --color-table-row-odd: var(--color-base-variant-3);
+}
+
+.light-theme {
+    /* Base colors */
+    --color-white: #4c4f69;
+    --color-green: #1e66f5;
+    --color-green-dark: #dce0e8;
+    --color-orange: #df8e1d;
+    --color-blue: #1e66f5;
+    --color-blue-light: #6c6f85;
+    --color-purple: #7287fd;
+    --color-purple-600: #ccd0da;
+    --color-purple-700: #dd7878;
+    --color-purple-800: #eff1f5;
+    --color-purple-900: #e6e9ef;
+    --color-purple-1000: #dce0e8;
+    --color-red: #e44747;
+    --color-black: #000;
+    --color-base-variant: var(--color-purple-1000);
+    --color-base-variant-2: var(--color-purple-600);
+    --color-base-variant-3: #e1e4eb94;
+    --color-base-variant-3: #e1e4eb59;
+    --color-text-variant: #9ca0b0;
+
+    /* Inputs */
+    --color-input-border: var(--color-base-variant-2);
+
+    /* Buttons */
+    --color-button-disabled-text: var(--color-text-muted);
 }
 
 body {
@@ -82,7 +124,8 @@ td {
 }
 
 #table td:has(#all-page),
-#table td:has(input[type="checkbox"]) {
+#table td:has(input[type="checkbox"]),
+#edit-fields td:has(#label-ai) {
     display: flex;
     align-items: center;
 }
@@ -149,6 +192,24 @@ td {
     background-size: cover !important;
 }
 
+#menu .links a[href$="&sql="] {
+    background: url("assets/sql.png") no-repeat scroll center center;
+    height: 30px;
+    width: 20px;
+}
+
+#menu .links a[href$="&import="] {
+    background: url("assets/import-sql.png") no-repeat scroll center center;
+}
+
+#menu .links a[href*="&dump="] {
+    background: url("assets/export-sql.png") no-repeat scroll center center;
+}
+
+#menu .links a[href$="&create="] {
+    background: url("assets/create-table.png") no-repeat scroll center center;
+}
+
 #tables li {
     align-items: baseline;
 }
@@ -179,11 +240,149 @@ td {
     font-weight: bold;
 }
 
+label.block {
+    display: block;
+}
+
+table.layout td {
+    display: flex;
+}
+
+table.layout label {
+    display: flex;
+    align-items: center;
+}
+
 .message {
     font-size: 20px;
 }
 
-/* AdminerJsonPreview */
+.icon {
+    background-size: cover;
+    background-color: var(--color-purple-1000);
+}
+
+.icon:hover {
+    background-color: var(--color-purple-700);
+}
+
+.icon-up {
+    background-image: url("assets/up.png");
+}
+
+.icon-down {
+    background-image: url("assets/down.png");
+}
+
+.icon-plus {
+    background-image: url("assets/plus.png");
+}
+
+.icon-cross {
+    background-image: url("assets/cross.png");
+}
+
+.footer {
+    background: var(--color-background-shade);
+    margin-left: calc(-1 * var(--ui-content-spacing));
+    background: var(--color-background-shade);
+    border-top: 1px solid var(--color-border);
+    padding: 12px 0 12px var(--ui-content-spacing);
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer + p {
+    display: none;
+}
+.footer > div {
+    background: unset;
+    border-top: unset;
+    padding: inherit;
+}
+.footer-import {
+    padding: 12px 0 12px var(--ui-content-spacing);
+}
+.footer-import a {
+    display: inline-block;
+    padding: 10px 0px;
+    margin: 0;
+    color: var(--color-text);
+    font-family: "Segoe UI Semibold", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+.footer-import a:hover {
+    color: unset;
+}
+.logout {
+    position: fixed;
+}
+
+html.light-theme {
+    #menu .links a[href$="&sql="] {
+        background: url("assets/sql-dark.png") no-repeat scroll center center;
+        height: 30px;
+        width: 20px;
+    }
+
+    #menu .links a[href$="&import="] {
+        background: url("assets/import-sql-dark.png") no-repeat scroll center center;
+    }
+
+    #menu .links a[href*="&dump="] {
+        background: url("assets/export-sql-dark.png") no-repeat scroll center center;
+    }
+
+    #menu .links a[href$="&create="] {
+        background: url("assets/create-table-dark.png") no-repeat scroll center center;
+    }
+
+    #tables a.active.select,
+    #tables li:has(a.active.structure) a.select {
+        background: url("assets/table-active-dark.png") no-repeat scroll center bottom;
+        background-size: contain;
+    }
+
+    #tables a.select {
+        background: url("assets/table-dark.png") no-repeat scroll center bottom;
+        background-size: contain;
+    }
+
+    a.json-icon {
+        background-image: url("assets/down-dark.png");
+        background-color: var(--color-base-variant-2);
+    }
+
+    a.json-icon.json-up {
+        background-image: url("assets/up-dark.png");
+    }
+
+    .icon-up {
+        background-image: url("assets/up-dark.png");
+        background-size: contain;
+    }
+
+    .icon-down {
+        background-image: url("assets/down-dark.png");
+        background-size: contain;
+    }
+
+    .icon-plus {
+        background-image: url("assets/plus-dark.png");
+    }
+
+    .icon-cross {
+        background-image: url("assets/cross-dark.png");
+    }
+
+    .icon:hover {
+        background-color: var(--color-base-variant-2);
+    }
+}
+
+/* <AdminerJsonPreview> */
 .json {
     border: 1px solid var(--color-purple-600);
 }
@@ -214,15 +413,21 @@ td {
 }
 
 a.json-icon {
-    background-image: url("assets/down.gif");
+    background-image: url("assets/down.png");
     background-color: var(--color-purple-1000);
+    background-size: contain;
+}
+
+a.json-icon:hover {
+    background-color: var(--color-purple-700);
 }
 
 a.json-icon.json-up {
-    background-image: url("assets/up.gif");
+    background-image: url("assets/up.png");
 }
+/* </ AdminerJsonPreview> */
 
-/* AdminerTablesFilter */
+/* <AdminerTablesFilter> */
 #tables li.hidden {
     display: none;
 }
@@ -230,54 +435,4 @@ a.json-icon.json-up {
 #filter-field {
     width: 100%;
 }
-
-body.light {
-    #menu .links a[href$="&sql="] {
-        background: url("assets/sql-dark.png") no-repeat scroll center center;
-        height: 30px;
-        width: 20px;
-    }
-
-    #menu .links a[href$="&import="] {
-        background: url("assets/import-sql-dark.png") no-repeat scroll center center;
-    }
-
-    #menu .links a[href*="&dump="] {
-        background: url("assets/export-sql-dark.png") no-repeat scroll center center;
-    }
-
-    #menu .links a[href$="&create="] {
-        background: url("assets/create-table-dark.png") no-repeat scroll center center;
-    }
-
-    #tables a.active.select,
-    #tables li:has(a.active.structure) a.select {
-        background: url("assets/table-active-dark.png") no-repeat scroll center bottom;
-        background-size: contain;
-    }
-
-    #tables a.select {
-        background: url("assets/table-dark.png") no-repeat scroll center bottom;
-        background-size: contain;
-    }
-}
-
-body.dark {
-    #menu .links a[href$="&sql="] {
-        background: url("assets/sql.png") no-repeat scroll center center;
-        height: 30px;
-        width: 20px;
-    }
-
-    #menu .links a[href$="&import="] {
-        background: url("assets/import-sql.png") no-repeat scroll center center;
-    }
-
-    #menu .links a[href*="&dump="] {
-        background: url("assets/export-sql.png") no-repeat scroll center center;
-    }
-
-    #menu .links a[href$="&create="] {
-        background: url("assets/create-table.png") no-repeat scroll center center;
-    }
-}
+/* </ AdminerTablesFilter> */
