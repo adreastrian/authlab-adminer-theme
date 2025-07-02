@@ -2,7 +2,6 @@
 
 :root {
     /* Base colors */
-    --color-green: #8fc3f7;
     --shadow-table: none;
     --color-base-variant: rgba(255, 255, 255, 0.03);
     --color-base-variant-2: rgba(255, 255, 255, 0.05);
@@ -16,12 +15,14 @@
 
     /* Tables */
     --color-table-row-odd: var(--color-base-variant-3);
+
+    --ui-sidebar-width: 300px;
 }
 
 .light-theme {
     /* Base colors */
     --color-white: #4c4f69;
-    --color-green: #1e66f5;
+    --color-green: #7287fd;
     --color-green-dark: #dce0e8;
     --color-orange: #df8e1d;
     --color-blue: #1e66f5;
@@ -41,6 +42,8 @@
     --color-text-variant: #9ca0b0;
 
     --color-highlight: #dce0e869;
+    --color-link: var(--color-green);
+    --color-link-hover: var(--color-blue);
 
     /* Inputs */
     --color-input-border: var(--color-base-variant-2);
@@ -48,6 +51,8 @@
 
     /* Buttons */
     --color-button-disabled-text: var(--color-text-muted);
+
+    --color-button-background: var(--color-blue);
 }
 
 body {
@@ -75,12 +80,24 @@ fieldset {
     margin-bottom: 15px !important;
 }
 
+#breadcrumb a {
+    color: var(--color-link);
+}
+
+#breadcrumb a:hover {
+    color: var(--color-link-hover);
+}
+
 #content {
     padding: 10px 20px 20px 0;
 }
 
 #content > p + form {
     margin-top: 15px;
+}
+
+form:not(#form) table.layout td {
+    display: flex;
 }
 
 #tables {
@@ -173,10 +190,13 @@ td {
     font-size: 20px;
     font-weight: bold;
     line-height: normal;
-
-    line-height: normal;
-    /* padding-left: 20px; */
     padding: 0;
+    color: var(--color-link);
+}
+
+#logout:hover {
+    color: var(--color-link-hover);
+    background: transparent;
 }
 
 .footer {
@@ -188,73 +208,80 @@ td {
 }
 
 #menu p.links {
-    justify-content: center;
-    align-items: center;
-    margin: unset;
+    justify-content: space-evenly;
+    margin: 10px 0;
 }
 
 #menu p.links a {
     text-indent: -99999px;
     display: inline-block;
     width: 20px;
-    height: 20px;
+    height: 5px;
     background-size: cover !important;
 }
 
+#menu .links a[href$="&sql="],
+#menu .links a[href$="&import="],
+#menu .links a[href*="&dump="],
+#menu .links a[href$="&create="],
+a.json-icon,
+.icon {
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: var(--color-text);
+    background-image: none !important;
+}
+
 #menu .links a[href$="&sql="] {
-    background: url("assets/sql.png") no-repeat scroll center center;
-    height: 30px;
-    width: 20px;
+    mask-image: url(assets/code.svg);
 }
 
 #menu .links a[href$="&import="] {
-    background: url("assets/import-sql.png") no-repeat scroll center center;
+    mask-image: url(assets/import.svg);
 }
 
 #menu .links a[href*="&dump="] {
-    background: url("assets/export-sql.png") no-repeat scroll center center;
+    mask-image: url(assets/export.svg);
 }
 
 #menu .links a[href$="&create="] {
-    background: url("assets/create-table.png") no-repeat scroll center center;
-}
-
-#tables li {
-    align-items: baseline;
-}
-
-#tables a.select {
-    display: block;
-    height: 16px;
-    margin-left: 8px;
-    padding-top: 1px;
-    overflow: hidden;
-    text-indent: -9999999px;
-    text-decoration: none;
-    background: url("assets/table.png") no-repeat scroll center bottom;
-    background-size: contain;
-}
-
-#tables a {
-    order: unset !important;
-}
-
-#tables a.active.select,
-#tables li:has(a.active.structure) a.select {
-    background: url("assets/table-active.png") no-repeat scroll center bottom;
-    background-size: contain;
+    mask-image: url(assets/create-table.svg);
 }
 
 #tables li:has(a.active.select) a.structure {
     font-weight: bold;
 }
 
-label.block {
-    display: block;
+#tables a.select {
+    margin-left: 15px;
+    -webkit-mask-image: url(assets/database.svg);
+    mask-image: url(assets/database.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    width: 14px;
+    height: 14px;
+    background-color: var(--color-text);
+    padding: 0;
+    text-indent: -9999999px;
 }
 
-table.layout td {
-    /* display: flex; */
+#tables a.active.select,
+#tables li:has(a.active.structure) a.select {
+    background-color: var(--color-text-highlight) !important;
+}
+
+#tables li {
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+label.block {
+    display: block;
 }
 
 table.layout label {
@@ -267,9 +294,12 @@ table.layout label {
 }
 
 .icon {
-    background-size: cover;
-    background-color: var(--color-purple-1000);
     cursor: pointer;
+    background-color: var(--color-link);
+}
+
+.icon:hover {
+    background-color: var(--color-link-hover) !important;
 }
 
 .icon:hover {
@@ -277,19 +307,19 @@ table.layout label {
 }
 
 .icon-up {
-    background-image: url("assets/up.png");
+    mask-image: url("assets/up.svg");
 }
 
 .icon-down {
-    background-image: url("assets/down.png");
+    mask-image: url("assets/down.svg");
 }
 
 .icon-plus {
-    background-image: url("assets/plus.png");
+    mask-image: url("assets/plus.svg");
 }
 
 .icon-cross {
-    background-image: url("assets/cross.png");
+    mask-image: url("assets/cancel.svg");
 }
 
 .footer {
@@ -328,65 +358,46 @@ table.layout label {
 }
 
 html.light-theme {
-    #menu .links a[href$="&sql="] {
-        background: url("assets/sql-dark.png") no-repeat scroll center center;
-        height: 30px;
-        width: 20px;
+    input[type="submit"]:not(:disabled),
+    input[type="button"]:not(:disabled) {
+        color: var(--color-purple-800);
+    }
+}
+
+body.import {
+    #form fieldset {
+        background-color: var(--color-background-shade);
+        padding: 20px 40px 40px;
+        margin: 0 30px 15px 0;
     }
 
-    #menu .links a[href$="&import="] {
-        background: url("assets/import-sql-dark.png") no-repeat scroll center center;
+    #form fieldset + p label {
+        margin-left: 0px;
     }
 
-    #menu .links a[href*="&dump="] {
-        background: url("assets/export-sql-dark.png") no-repeat scroll center center;
+    #form fieldset + p label input {
+        margin-left: 0px;
     }
+}
 
-    #menu .links a[href$="&create="] {
-        background: url("assets/create-table-dark.png") no-repeat scroll center center;
+body.select-data-page {
+    #content p.links {
+        /* margin-left: 0px; */
     }
+}
 
-    #tables a.active.select,
-    #tables li:has(a.active.structure) a.select {
-        background: url("assets/table-active-dark.png") no-repeat scroll center bottom;
-        background-size: contain;
-    }
+.sqlarea.jush {
+    background-color: var(--color-background-shade);
+}
 
-    #tables a.select {
-        background: url("assets/table-dark.png") no-repeat scroll center bottom;
-        background-size: contain;
-    }
+.jush-autocomplete option:checked {
+    background-color: var(--color-link);
+    color: var(--color-purple-800);
+}
 
-    a.json-icon {
-        background-image: url("assets/down-dark.png");
-        background-color: var(--color-base-variant-2);
-    }
-
-    a.json-icon.json-up {
-        background-image: url("assets/up-dark.png");
-    }
-
-    .icon-up {
-        background-image: url("assets/up-dark.png");
-        background-size: contain;
-    }
-
-    .icon-down {
-        background-image: url("assets/down-dark.png");
-        background-size: contain;
-    }
-
-    .icon-plus {
-        background-image: url("assets/plus-dark.png");
-    }
-
-    .icon-cross {
-        background-image: url("assets/cross-dark.png");
-    }
-
-    .icon:hover {
-        background-color: var(--color-base-variant-2);
-    }
+option {
+    color: var(--color-text);
+    padding: 5px;
 }
 
 /* <AdminerJsonPreview> */
@@ -420,17 +431,16 @@ html.light-theme {
 }
 
 a.json-icon {
-    background-image: url("assets/down.png");
-    background-color: var(--color-purple-1000);
-    background-size: contain;
+    mask-image: url(assets/expand.svg);
+    background-color: var(--color-link);
 }
 
 a.json-icon:hover {
-    background-color: var(--color-purple-700);
+    background-color: var(--color-link-hover);
 }
 
 a.json-icon.json-up {
-    background-image: url("assets/up.png");
+    mask-image: url("assets/shrink.svg");
 }
 /* </ AdminerJsonPreview> */
 
