@@ -10,6 +10,7 @@ class AdminerDarkSwitcher extends \Adminer\Plugin
         .dropdown-container {
             position: fixed;
             right: .5em;
+            top: 16px;
         }
         
         /* The button that is always visible */
@@ -37,7 +38,7 @@ class AdminerDarkSwitcher extends \Adminer\Plugin
             right: 0;
             width: 200px;
             background-color: white;
-            background-color: var(--color-table-row-odd);
+            background-color: var(--color-background-shade);
             padding: 8px;
             z-index: 10;
             
@@ -69,8 +70,8 @@ class AdminerDarkSwitcher extends \Adminer\Plugin
             color: var(--color-text);
         }
         
-        .menu-item:hover {
-            background-color: #f8fafc;
+        .menu-item:hover,
+        .menu-item.selected:hover {
             background-color: var(--color-table-row-checked);
         }
 

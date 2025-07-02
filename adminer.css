@@ -40,8 +40,11 @@
     --color-base-variant-3: #e1e4eb59;
     --color-text-variant: #9ca0b0;
 
+    --color-highlight: #dce0e869;
+
     /* Inputs */
     --color-input-border: var(--color-base-variant-2);
+    --color-input-focus-background: var(--color-purple-1000);
 
     /* Buttons */
     --color-button-disabled-text: var(--color-text-muted);
@@ -72,6 +75,10 @@ fieldset {
     margin-bottom: 15px !important;
 }
 
+#content {
+    padding: 10px 20px 20px 0;
+}
+
 #content > p + form {
     margin-top: 15px;
 }
@@ -82,6 +89,7 @@ fieldset {
 
 table {
     background: unset;
+    margin-bottom: 15px;
 }
 
 thead {
@@ -154,10 +162,11 @@ td {
     box-shadow: none;
     font-size: 20px;
     font-weight: bold;
-    top: 25px;
+    top: 17px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: fixed;
 }
 
 #logout {
@@ -245,7 +254,7 @@ label.block {
 }
 
 table.layout td {
-    display: flex;
+    /* display: flex; */
 }
 
 table.layout label {
@@ -260,6 +269,7 @@ table.layout label {
 .icon {
     background-size: cover;
     background-color: var(--color-purple-1000);
+    cursor: pointer;
 }
 
 .icon:hover {
@@ -315,9 +325,6 @@ table.layout label {
 }
 .footer-import a:hover {
     color: unset;
-}
-.logout {
-    position: fixed;
 }
 
 html.light-theme {

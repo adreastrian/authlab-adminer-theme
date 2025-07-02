@@ -49,7 +49,7 @@ class AdminerCollations extends \Adminer\Plugin
                 document.addEventListener("DOMContentLoaded", init, false);
 
                 function init() {
-                    var selects = document.querySelectorAll("select[name='Collation'], select[name*='collation']");
+                    var selects = document.querySelectorAll("select[name='Collation'], select[name*='collation'], #collations");
 
                     for (var i = 0; i < selects.length; i++) {
                         replaceOptions(selects[i]);
