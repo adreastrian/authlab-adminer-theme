@@ -132,6 +132,16 @@ td {
     font-size: 14px;
 }
 
+.checkable tbody tr:hover,
+.odds > tbody > tr:nth-child(2n):hover {
+    background-color: var(--color-table-row-hover);
+}
+
+.js .checkable tr.checked,
+.odds > tbody > tr.checked:nth-child(2n) {
+    background: var(--color-table-row-checked);
+}
+
 .odds > tbody {
     background: var(--color-background);
 }

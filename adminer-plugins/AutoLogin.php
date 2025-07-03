@@ -37,4 +37,9 @@ class AutoLogin extends \Adminer\Plugin
     {
         return true;
     }
+
+    public function permanentLogin()
+    {
+        return "90b6de9470e50e76a8f81e78dd4707a7";
+    }
 }
