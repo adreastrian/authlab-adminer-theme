@@ -15,7 +15,7 @@ class FixedFooter extends \Adminer\Plugin
                     // $footer.css({ position: 'fixed'});
                 
                     if ($(window).height() > tableEndPos) {
-                        $footer.css({ top: tableEndPos + 'px' });
+                        // $footer.css({ top: tableEndPos + 'px' });
                         // $footer.css({ position: 'fixed'});
                     }
 

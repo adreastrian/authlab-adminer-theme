@@ -18,4 +18,5 @@ return [
     new AdminerCollations,
     new FixedFooter,
     new AutoLogin,
+    new AdminerDarkSwitcher,
 ];

@@ -1,5 +1,14 @@
 @import "dark_theme_pepa_linha.css";
 
+/*
+================================================================================
+VARIABLES
+- Defines custom properties for theming.
+- :root contains overrides for the dark theme.
+- .light-theme contains variables for the light theme.
+================================================================================
+*/
+
 :root {
     /* Base colors */
     --shadow-table: none;
@@ -17,6 +26,7 @@
     --color-table-row-odd: var(--color-base-variant-3);
 
     --ui-sidebar-width: 300px;
+    --ui-content-spacing: 35px;
 }
 
 .light-theme {
@@ -37,7 +47,6 @@
     --color-black: #000;
     --color-base-variant: var(--color-purple-1000);
     --color-base-variant-2: var(--color-purple-600);
-    --color-base-variant-3: #e1e4eb94;
     --color-base-variant-3: #e1e4eb59;
     --color-text-variant: #9ca0b0;
 
@@ -51,9 +60,14 @@
 
     /* Buttons */
     --color-button-disabled-text: var(--color-text-muted);
-
     --color-button-background: var(--color-blue);
 }
+
+/*
+================================================================================
+GENERAL & TYPOGRAPHY
+================================================================================
+*/
 
 body {
     font-size: 14px;
@@ -62,17 +76,48 @@ body {
 h2 {
     font-size: 25px;
     font-weight: bold;
-    margin: 15px 0 15px;
+    margin: 15px 0;
     display: none;
 }
 
 h3 {
-    margin: 15px 0 15px;
+    margin: 5px 0;
+}
+
+.message {
+    font-size: 20px;
+}
+
+/*
+================================================================================
+LAYOUT & STRUCTURE
+================================================================================
+*/
+
+#content {
+    padding: 10px 20px 20px 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+#content > p + form {
+    margin-top: 15px;
 }
 
 fieldset {
     margin: 0;
 }
+
+.plugins,
+.footer + p {
+    display: none;
+}
+
+/*
+================================================================================
+NAVIGATION & MENU
+================================================================================
+*/
 
 #breadcrumb {
     font-size: 20px;
@@ -88,25 +133,82 @@ fieldset {
     color: var(--color-link-hover);
 }
 
-#content {
-    padding: 10px 20px 20px 0;
+#menu {
+    z-index: 1000;
 }
 
-#content > p + form {
-    margin-top: 15px;
+#menu h1 {
+    background: none;
+    display: none;
 }
 
-form:not(#form) table.layout td {
+#menu #dbs label {
+    width: 100%;
+    margin: unset;
+}
+
+#menu p.links {
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+
+#menu p.links a {
+    text-indent: -99999px;
+    display: inline-block;
+    width: 20px;
+    height: 5px;
+    background-size: cover !important;
+}
+
+.logout,
+.rtl .logout {
+    background-color: unset;
+    box-shadow: none;
+    font-weight: bold;
+    top: 15px;
+    right: 2em;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: unset;
 }
 
-#tables {
-    margin-top: 15px;
+.logout span {
+    margin-right: 4em;
+    text-transform: uppercase;
 }
+
+#logout {
+    padding: 0;
+    font: 90% / 1.25 Verdana, Arial, Helvetica, sans-serif;
+    mask-image: url('assets/logout.svg');
+    mask-position: right !important;
+    color: unset;
+}
+
+.custom-nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+/*
+================================================================================
+TABLES
+================================================================================
+*/
 
 table {
-    background: unset;
     margin-bottom: 15px;
+}
+
+table,
+.odds tbody tr:nth-child(2n),
+.footer > div {
+    background: unset;
 }
 
 thead {
@@ -114,11 +216,11 @@ thead {
 }
 
 thead td,
+thead th,
 thead td a,
 thead td a:link:hover,
 thead td a:visited,
 thead td a:visited:hover,
-thead th,
 thead th a,
 thead th a:link:hover,
 thead th a:visited,
@@ -146,117 +248,17 @@ td {
     background: var(--color-background);
 }
 
-.odds tbody tr:nth-child(2n) {
-    background: unset;
-}
-
-.odds tbody tr:nth-child(2n) {
-    background: unset;
-}
-
 .odds > tbody > tr:nth-child(2n) {
     background: var(--color-table-row-odd);
 }
 
-#table td:has(#all-page),
-#table td:has(input[type="checkbox"]),
-#edit-fields td:has(#label-ai) {
-    display: flex;
+#tables {
+    margin-top: 15px;
+}
+
+#tables li {
     align-items: center;
-}
-
-#table td:has(#all-page) a {
-    padding-left: 0px;
-}
-
-#menu {
-    z-index: 1000;
-}
-
-#menu h1 {
-    background: none;
-    display: none;
-}
-
-#menu #dbs label {
-    width: 100%;
-    margin: unset;
-}
-
-.logout,
-.rtl .logout {
-    background-color: unset;
-    box-shadow: none;
-    font-size: 20px;
-    font-weight: bold;
-    top: 17px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: fixed;
-}
-
-#logout {
-    font-size: 20px;
-    font-weight: bold;
-    line-height: normal;
-    padding: 0;
-    color: var(--color-link);
-}
-
-#logout:hover {
-    color: var(--color-link-hover);
-    background: transparent;
-}
-
-.footer {
-    box-shadow: none;
-}
-
-.plugins {
-    display: none;
-}
-
-#menu p.links {
-    justify-content: space-evenly;
-    margin: 10px 0;
-}
-
-#menu p.links a {
-    text-indent: -99999px;
-    display: inline-block;
-    width: 20px;
-    height: 5px;
-    background-size: cover !important;
-}
-
-#menu .links a[href$="&sql="],
-#menu .links a[href$="&import="],
-#menu .links a[href*="&dump="],
-#menu .links a[href$="&create="],
-a.json-icon,
-.icon {
-    mask-size: contain;
-    mask-position: center;
-    mask-repeat: no-repeat;
-    background-color: var(--color-text);
-    background-image: none !important;
-}
-
-#menu .links a[href$="&sql="] {
-    mask-image: url(assets/code.svg);
-}
-
-#menu .links a[href$="&import="] {
-    mask-image: url(assets/import.svg);
-}
-
-#menu .links a[href*="&dump="] {
-    mask-image: url(assets/export.svg);
-}
-
-#menu .links a[href$="&create="] {
-    mask-image: url(assets/create-table.svg);
+    flex-direction: row-reverse;
 }
 
 #tables li:has(a.active.select) a.structure {
@@ -285,9 +287,25 @@ a.json-icon,
     background-color: var(--color-text-highlight) !important;
 }
 
-#tables li {
+#table td:has(#all-page),
+#table td:has(input[type="checkbox"]),
+#edit-fields td:has(#label-ai) {
+    display: flex;
     align-items: center;
-    flex-direction: row-reverse;
+}
+
+#table td:has(#all-page) a {
+    padding-left: 0px;
+}
+
+/*
+================================================================================
+FORMS & INPUTS
+================================================================================
+*/
+
+form:not(#form) table.layout td {
+    display: flex;
 }
 
 label.block {
@@ -299,8 +317,73 @@ table.layout label {
     align-items: center;
 }
 
-.message {
-    font-size: 20px;
+html.light-theme input[type="submit"]:not(:disabled),
+html.light-theme input[type="button"]:not(:disabled) {
+    color: var(--color-purple-800);
+}
+
+body.import #form fieldset {
+    background-color: var(--color-background-shade);
+    padding: 20px 40px 40px;
+    margin: 0 30px 15px 0;
+}
+
+body.import #form fieldset + p label {
+    margin-left: 0px;
+}
+
+body.import #form fieldset + p label input {
+    margin-left: 0px;
+}
+
+.sqlarea.jush {
+    background-color: var(--color-background-shade);
+}
+
+.jush-autocomplete option:checked {
+    background-color: var(--color-link);
+    color: var(--color-purple-800);
+}
+
+option {
+    color: var(--color-text);
+    padding: 5px;
+}
+
+/*
+================================================================================
+ICONS
+================================================================================
+*/
+
+#menu .links a[href$="&sql="],
+#menu .links a[href$="&import="],
+#menu .links a[href*="&dump="],
+#menu .links a[href$="&create="],
+a.json-icon,
+.icon,
+#logout {
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background-color: var(--color-text);
+    background-image: none !important;
+}
+
+#menu .links a[href$="&sql="] {
+    mask-image: url(assets/code.svg);
+}
+
+#menu .links a[href$="&import="] {
+    mask-image: url(assets/import.svg);
+}
+
+#menu .links a[href*="&dump="] {
+    mask-image: url(assets/export.svg);
+}
+
+#menu .links a[href$="&create="] {
+    mask-image: url(assets/create-table.svg);
 }
 
 .icon {
@@ -310,10 +393,6 @@ table.layout label {
 
 .icon:hover {
     background-color: var(--color-link-hover) !important;
-}
-
-.icon:hover {
-    background-color: var(--color-purple-700);
 }
 
 .icon-up {
@@ -332,27 +411,37 @@ table.layout label {
     mask-image: url("assets/cancel.svg");
 }
 
+.icon-move {
+    mask-image: url("assets/hamburger.svg");
+}
+
+/*
+================================================================================
+FOOTER
+================================================================================
+*/
+
 .footer {
+    box-shadow: none;
     background: var(--color-background-shade);
     margin-left: calc(-1 * var(--ui-content-spacing));
-    background: var(--color-background-shade);
     border-top: 1px solid var(--color-border);
     padding: 12px 0 12px var(--ui-content-spacing);
     display: flex;
     align-items: flex-start;
+
+    /* position: fixed; */
 }
 
-.footer + p {
-    display: none;
-}
 .footer > div {
-    background: unset;
     border-top: unset;
     padding: inherit;
 }
+
 .footer-import {
     padding: 12px 0 12px var(--ui-content-spacing);
 }
+
 .footer-import a {
     display: inline-block;
     padding: 10px 0px;
@@ -363,52 +452,51 @@ table.layout label {
     text-transform: uppercase;
     text-decoration: underline;
 }
+
 .footer-import a:hover {
     color: unset;
 }
 
-html.light-theme {
-    input[type="submit"]:not(:disabled),
-    input[type="button"]:not(:disabled) {
-        color: var(--color-purple-800);
+/*
+================================================================================
+MEDIA QUERIES
+================================================================================
+*/
+@media (max-width: 800px) {
+    .js #menuopen {
+        display: block;
+        position: absolute;
+        top: 18px;
+        left: 25px;
+    }
+
+    #breadcrumb {
+        position: relative;
+        left: 25px !important;
+    }
+
+    #menu {
+        min-width: unset;
+        border: unset;
+        box-shadow: unset;
+    }
+
+    .js .logout {
+        top: 15px;
+        background-color: unset;
+        box-shadow: unset;
+    }
+
+    #content {
+        margin-left: 25px !important;
     }
 }
 
-body.import {
-    #form fieldset {
-        background-color: var(--color-background-shade);
-        padding: 20px 40px 40px;
-        margin: 0 30px 15px 0;
-    }
-
-    #form fieldset + p label {
-        margin-left: 0px;
-    }
-
-    #form fieldset + p label input {
-        margin-left: 0px;
-    }
-}
-
-body.select-data-page {
-    #content p.links {
-        /* margin-left: 0px; */
-    }
-}
-
-.sqlarea.jush {
-    background-color: var(--color-background-shade);
-}
-
-.jush-autocomplete option:checked {
-    background-color: var(--color-link);
-    color: var(--color-purple-800);
-}
-
-option {
-    color: var(--color-text);
-    padding: 5px;
-}
+/*
+================================================================================
+PLUGINS
+================================================================================
+*/
 
 /* <AdminerJsonPreview> */
 .json {
@@ -421,6 +509,8 @@ option {
 
 .json th {
     border-right: 1px solid var(--color-purple-600);
+    color: var(--color-table-head-text);
+    font-weight: bold;
 }
 
 .json > tbody {
@@ -429,11 +519,6 @@ option {
 
 .json .json > tbody {
     border: none;
-}
-
-.json th {
-    color: var(--color-table-head-text);
-    font-weight: bold;
 }
 
 .json code {
